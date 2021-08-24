@@ -1,6 +1,8 @@
 <template>
-  <div>hi</div>
-  <Ben/>
+  <div>导航栏 | <router-link to="/" >Ben</router-link> | <router-link to="/xxx" >Ben2</router-link>
+  </div>
+  <hr>
+  <router-view></router-view>
 </template>
 
 <script>
