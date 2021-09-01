@@ -2,15 +2,18 @@
   <router-view></router-view>
 </template>
 
-<script>
+<script lang="ts">
+import {ref, provide} from 'vue'
 export default {
   name: "App",
+  setup(){
+    const asideVisible = ref(false)
+    provide('asideVisible',asideVisible)
+  }
 };
 </script>
 
 
 <style lang="scss" scoped>
-.topnav {
-  border: 1px solid red;
-}
+
 </style>
