@@ -19,20 +19,22 @@
           </li>
         </ol>
       </aside>
-      <main>主内容</main>
+      <main>
+          <router-view></router-view>
+      </main>
     </div>
   </div>
 </template>
 
 
 <script lang="ts">
-import Topnav from "../components/Topnav.vue"
-import {inject, Ref} from 'vue'
+import Topnav from "../components/Topnav.vue";
+import { inject, Ref } from "vue";
 export default {
   components: { Topnav },
   setup() {
     const asideVisible = inject<Ref<boolean>>("asideVisible");
-    return {asideVisible}
+    return { asideVisible };
   },
 };
 </script>
@@ -42,11 +44,7 @@ aside {
   background: lightblue;
   width: 150px;
   padding: 16px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding-top: 70px;
-  height: 100%;
+
   > h2 {
     margin-bottom: 4px;
   }
@@ -54,6 +52,12 @@ aside {
     > li {
       padding: 4px 0;
     }
+  }
+  @media (max-width: 500px) {
+    position: fixed; //PC端不用固定定位
+    top: 0;
+    left: 0;
+    padding-top: 70px;
   }
 }
 </style>
