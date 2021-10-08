@@ -1,6 +1,12 @@
 <template>
   <div>
-    <button class="gulu-switch" @click="toggle" :class="{'gulu-checked': value }"><span></span></button>
+    <button
+      class="gulu-switch"
+      @click="toggle"
+      :class="{ 'gulu-checked': value }"
+    >
+      <span></span>
+    </button>
     <div>{{ value }}</div>
   </div>
 </template>
@@ -47,12 +53,12 @@ $h2: $h - 4px;
       left: calc(100% - #{$h2} - 2px);
     }
   }
-  &:active {
+  &:active {//点击的时候 span会扩大
     > span {
       width: $h2 + 4px;
     }
   }
-  &.gulu-checked:active {
+  &.gulu-checked:active { 
     > span {
       width: $h2 + 4px;
       margin-left: -4px;

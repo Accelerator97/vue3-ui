@@ -48,44 +48,67 @@ export default {
     flex-shrink: 0; //Topnav不允许缩放
   }
   .content {
+    display: flex;
     flex-grow: 1;
     padding-top: 60px;
     padding-left: 156px;
     display: flex;
     > aside {
+      position: fixed;
+      top: 0;
+      left: 0;
+      margin-top: 70px;
       flex-shrink: 0;
+      width: 260px;
       overflow-x: hidden;
       overflow-y: auto;
       z-index: 10;
       box-shadow: 5px 0 5px rgba(51 51 51/10%);
       padding-bottom: 32px;
+      border-right: 1px solid #e8e8e8;
+      > h2 {
+        margin-bottom: 4px;
+        line-height: 22px;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: 700;
+      }
+      > ol {
+        > li {
+          position: relative;
+          width: 100%;
+          font-size: 14px;
+          > a {
+            display: block;
+            padding: 12px 20px;
+            cursor: pointer;
+            color: #333;
+            &:hover {
+              background: #e5f2fa;
+              border-bottom: none;
+            }
+          }
+        }
+        .router-link-active {
+          background: #e5f2fa;
+          border-bottom: none;
+          &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            border-right: 3px solid #6b9ab8;
+          }
+        }
+      }
     }
     > main {
       flex-grow: 1;
-      padding: 16px;
+      overflow: auto;
+      padding: 60px 180px;
       background: white;
     }
-  }
-  aside {
-    background: lightblue;
-    width: 150px;
-    padding: 16px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding-top: 70px;
-    height: 100%;
-    > h2 {
-      margin-bottom: 4px;
-    }
-    > ol {
-      > li {
-        padding: 4px 0;
-      }
-    }
-  }
-  main {
-    overflow: auto; //内容过多时显示滚动条
   }
 }
 
@@ -96,10 +119,8 @@ export default {
     }
     .aside {
       width: 180px;
-      background-color: lightblue;
       transition: all 0.25s ease;
       transform: translateX(-200px);
-
       &.visible {
         transform: translateX(0px);
       }
