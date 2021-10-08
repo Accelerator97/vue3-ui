@@ -3,18 +3,21 @@
 </template>
 
 <script lang="ts">
-import { ref, provide } from "vue";
+import { ref, provide, onMounted } from "vue";
 import { router } from "./router";
 export default {
   name: "App",
   setup() {
     const width = document.documentElement.clientWidth;
-    const asideVisible = ref(width <= 500 ? false : true);
-    provide("asideVisible", asideVisible);
+    const asideVisible = ref(width > 500 ? true : false);
     router.afterEach(() => {
       if (width <= 500) {
         asideVisible.value = false; //在移动端中，每次切换的时候关闭侧边栏
       }
+    });
+    provide("asideVisible", asideVisible);
+    onMounted(() => {
+      console.log(asideVisible.value);
     });
   },
 };
