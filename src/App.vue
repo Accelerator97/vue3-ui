@@ -16,9 +16,6 @@ export default {
       }
     });
     provide("asideVisible", asideVisible);
-    onMounted(() => {
-      console.log(asideVisible.value);
-    });
   },
 };
 </script>
