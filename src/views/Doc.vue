@@ -6,7 +6,7 @@
         <h2>文档</h2>
         <ol>
           <li>
-            <router-link to="/doc/intro" >介绍</router-link>
+            <router-link to="/doc/intro">介绍</router-link>
           </li>
         </ol>
         <h2>组件列表</h2>
@@ -26,7 +26,7 @@
         </ol>
       </aside>
       <main>
-        <router-view></router-view>
+        <router-view class="demo"></router-view>
       </main>
     </div>
   </div>
@@ -49,23 +49,27 @@ export default {
 .layout {
   display: flex;
   flex-direction: column;
+  // height: 100%;
   // height: 100vh;
   > .nav {
     flex-shrink: 0; //Topnav不允许缩放
   }
   .content {
+    // background: blue;
+    height: 100%;
     display: flex;
     flex-grow: 1;
     padding-top: 60px;
     padding-left: 156px;
-    display: flex;
     > aside {
+      background: white;
+      height: 100%;
       position: fixed;
       top: 0;
       left: 0;
-      margin-top: 70px;
+      margin-top: 60px;
       flex-shrink: 0;
-      width: 260px;
+      width: 200px;
       overflow-x: hidden;
       overflow-y: auto;
       z-index: 10;
@@ -81,10 +85,11 @@ export default {
       }
       > ol {
         > li {
-          position: relative;
           width: 100%;
           font-size: 14px;
+          position: relative;
           > a {
+            // border: 1px solid red;
             display: block;
             padding: 12px 20px;
             cursor: pointer;
@@ -94,17 +99,16 @@ export default {
               border-bottom: none;
             }
           }
-        }
-        .router-link-active {
-          background: #e5f2fa;
-          border-bottom: none;
-          &:after {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            height: 100%;
-            border-right: 3px solid #6b9ab8;
+          > .router-link-active {
+            border-bottom: none;
+            &:after {
+              content: "";
+              position: absolute;
+              top: 0;
+              right: 0;
+              height: 100%;
+              border-right: 3px solid #6b9ab8;
+            }
           }
         }
       }
@@ -113,28 +117,26 @@ export default {
       flex-grow: 1;
       overflow: auto;
       padding: 60px 180px;
-      background: white;
     }
   }
 }
 
 @media (max-width: 500px) {
   .layout {
-    .content {
+    > .content {
       padding-left: 0;
-    }
-    .aside {
-      width: 180px;
-      transition: all 0.25s ease;
-      transform: translateX(-200px);
-      &.visible {
-        transform: translateX(0px);
+      aside {
+        z-index: 10;
+        transition: all 0.25s ease;
+        transform: translateX(-197px);
+        &.visible {
+          transform: translateX(0px);
+        }
       }
-    }
-    main {
-      overflow: auto;
-      padding: 20px 8px;
-      margin: 0 auto;
+      main {
+        overflow: auto;
+        padding: 20px 8px;
+      }
     }
   }
 }
