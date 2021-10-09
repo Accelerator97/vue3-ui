@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import SwitchDemo1 from "./SwitchDemo1.vue";
-import Demo from "./Demo.vue";
+import Demo from "../Demo.vue";
 import { ref } from "vue";
 export default {
   components: {

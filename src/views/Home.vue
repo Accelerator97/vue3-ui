@@ -24,7 +24,7 @@
         <svg class="icon">
           <use xlink:href="#icon-typescript-def"></use>
           <h3>基于TypeScript</h3>
-          <p>源代码采用TypeScript书写（非严格检查）</p>
+          <p>源代码采用TypeScript书写</p>
         </svg>
       </li>
       <li>
