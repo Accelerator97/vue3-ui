@@ -46,8 +46,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 $border-radius: 8px;
-$color: balck;
-$green: #02bcb0;
+$color: #2c3e50;
+$green: #4abf8a;
 .topnavandBanner {
   .banner {
     clip-path: ellipse(80% 60% at 50% 40%);
@@ -100,23 +100,33 @@ $green: #02bcb0;
 }
 
 .features {
-  margin: 64px auto;
+  margin: 0 auto;
   width: 400px;
+  padding: 0 16px;
 
   @media (min-width: 800px) {
     width: 800px;
+    > ul{
+      > li{
+        width: 50%;
+      }
+    }
   }
 
   @media (min-width: 1200px) {
     width: 1200px;
+    > ul{
+      > li{
+        width: 33.33333%;
+      }
+    }
   }
 
   > ul {
     display: flex;
     flex-wrap: wrap;
-
+    
     > li {
-      width: 400px;
       margin: 16px 0;
       display: grid;
       justify-content: start;
