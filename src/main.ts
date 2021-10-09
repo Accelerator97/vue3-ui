@@ -5,6 +5,7 @@ import App from './App.vue'
 import {router} from './router'
 import 'github-markdown-css'
 import Markdown from './components/MarkDown.vue'
+import './lib/svg.js'
 
 
 

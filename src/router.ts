@@ -10,7 +10,7 @@ import { createWebHashHistory, createRouter } from 'vue-router'
 
 import { h } from 'vue'
 const md = fileName => {
-    return h(Markdown, {path:`../markdown/${fileName}.md`, key: fileName })
+    return h(Markdown, { path: `../markdown/${fileName}.md`, key: fileName })
 }
 const history = createWebHashHistory()
 export const router = createRouter({
@@ -21,6 +21,7 @@ export const router = createRouter({
             path: '/doc', component: Doc, children: [
                 { path: '', component: DocDemo },
                 { path: 'intro', component: md("intro") },
+                { path: 'install', component: md("install") },
                 { path: 'switch', component: SwitchDemo },
                 { path: 'Button', component: ButtonDemo },
                 { path: 'Tabs', component: TabsDemo },
