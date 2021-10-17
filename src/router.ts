@@ -2,7 +2,7 @@ import Markdown from './components/MarkDown.vue';
 import Home from './views/Home.vue'
 import Doc from './views/Doc.vue'
 import SwitchDemo from './components/Switch/SwitchDemo.vue'
-import ButtonDemo from './components/ButtonDemo.vue'
+import ButtonDemo from './components/Button/ButtonDemo.vue'
 import TabsDemo from './components/TabsDemo.vue'
 import DiaLogDemo from './components/DiaLogDemo.vue'
 import DocDemo from './components/DocDemo.vue'
