@@ -1,7 +1,15 @@
 <template>
   <div class="gulu-selector-input">
-    <label class="placeholder" >{{ placeholder }}</label>
-    <input type="text" class="input" :value="value" @input="searchOptions($event)"/>
+    <label class="placeholder">{{ placeholder }}</label>
+    <input
+      type="text"
+      class="input"
+      :value="value"
+      ref="inputValue"
+      @input="searchOptions($event)"
+      @focus="searchOptions($event)"
+      @blur="setValue(value)"
+    />
     <svg class="icon">
       <use xlink:href="#icon-xiajiantou"></use>
     </svg>
@@ -9,6 +17,7 @@
 </template>
 
 <script>
+import {getCurrentInstance} from 'vue'
 export default {
   name: "SelectorInput",
   props: {
@@ -16,15 +25,25 @@ export default {
       type: String,
       default: "请选择",
     },
-    value:String
+    value: String,
   },
-  setup(props,ctx) {
-    const searchOptions = (e) =>{
+  setup(props, ctx) {
+    const instance = getCurrentInstance()//拿到当前实例
+
+    const searchOptions = (e) => {
       //向父组件传递value
-      ctx.emit('searchOptions',e.target.value)
+      ctx.emit("searchOptions", e.target.value);
+    };
+
+    const setValue = (value) => { //记忆功能
+      const _input = instance.refs.inputValue //把输入的value赋值给当前实例上的inputValue
+      if(_input.value.length >0 ){
+        _input.value = value  //这样一来当失去焦点的时候，_input自动填充上次的内容
+
+      }
     }
 
-    return {searchOptions}
+    return { searchOptions,setValue };
   },
 };
 </script>

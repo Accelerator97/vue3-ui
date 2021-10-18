@@ -1,17 +1,21 @@
 <template>
   <div class="gulu-selector-menu">
-    <div
-      class="gulu-selector-menuItem"
-      v-for="(item, index) of searchData"
-      :key="index"
-      @click="setItemValue(item)"
-    >
-      {{ item.text }}
-    </div>
+    <template v-if="searchData.length >0">
+        <div
+          class="gulu-selector-menuItem"
+          v-for="(item, index) of searchData"
+          :key="index"
+          @click="setItemValue(item)"
+        >
+          {{ item.text }}
+        </div>
+    </template>
+    <Nodata v-else/>
   </div>
 </template>
 
 <script>
+import Nodata from "./Nodata.vue";
 import { ref, onMounted, watch } from "vue";
 export default {
   name: "SelectorMenu",
@@ -42,6 +46,7 @@ export default {
       },
     },
   },
+  components:{Nodata},
   setup(props, ctx) {
     const searchData = ref([]); //用户传进来的数据
 
@@ -53,7 +58,10 @@ export default {
 
     const filterData = (value) => {
       searchData.value = props.data.filter((item) => {
-        return item.text.toLowerCase().trim().includes(props.searchValue.toLowerCase().trim());
+        return item.text
+          .toLowerCase()
+          .trim()
+          .includes(props.searchValue.toLowerCase().trim());
         //如果包含了props.serachValue就会放到searchData里面，如果不包含就不放进去
       });
     };
@@ -61,7 +69,8 @@ export default {
       () => {
         return props.searchValue;
       },
-      (value) => {  //这里的value就是改变后的searchValue
+      (value) => {
+        //这里的value就是改变后的searchValue
         filterData(value);
       }
     );
