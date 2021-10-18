@@ -1,9 +1,9 @@
 <template>
-  <div class="dot-wrapper" v-if="hasDot">
-    <div class="dot-item" v-for="item in itemLen" :key="item">
+  <div class="gulu-carousel-dot-wrapper" v-if="hasDot" >
+    <div class="gulu-carousel-dot-item" v-for="item in itemLen" :key="item">
       <a
         href="javascript:;"
-        class="dot-lk"
+        class="gulu-carousel-dot-lk"
         :style="{
           backgroundColor: item - 1 === currentIndex ? dotBgColor : '#fff',
         }"
@@ -38,12 +38,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.dot-wrapper{
+.gulu-carousel-dot-wrapper{
     width: 70px;
     height: 13px;
     border-radius: 10px;
     position:absolute;
-    bottom: 35px;
+    bottom: 20px;
     text-align: center;
     font-size: 0;
     left: 50%;
@@ -51,11 +51,11 @@ export default {
     margin-left:-39px;
     background-color:rgba(255,255,255,.5);
 
-    .dot-item {
+    .gulu-carousel-dot-item {
         display: inline-block;
         margin: 3px;
         
-        .dot-lk{
+        .gulu-carousel-dot-lk{
             display:block;
             padding-top:8px;
             width: 8px;

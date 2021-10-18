@@ -21,7 +21,10 @@
             <router-link to="/doc/button">button组件</router-link>
           </li>
           <li>
-            <router-link to="/doc/Carousel">Carousel组件</router-link>
+            <router-link to="/doc/carousel">Carousel组件</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/Selector">Selector组件</router-link>
           </li>
         </ol>
       </aside>
@@ -114,9 +117,10 @@ export default {
       }
     }
     > main {
+      min-height: 500px;
       flex-grow: 1;
       overflow: auto;
-      padding: 60px 180px;
+      padding: 30px 180px;
     }
   }
 }

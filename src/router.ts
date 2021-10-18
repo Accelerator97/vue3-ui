@@ -4,8 +4,8 @@ import Doc from './views/Doc.vue'
 import SwitchDemo from './components/Switch/SwitchDemo.vue'
 import ButtonDemo from './components/Button/ButtonDemo.vue'
 import CarouselDemo from './components/Carousel/CarouselDemo.vue'
-import DiaLogDemo from './components/DiaLogDemo.vue'
-import DocDemo from './components/DocDemo.vue'
+import SelectorDemo from './components/Selector/SelectorDemo.vue'
+
 import { createWebHashHistory, createRouter } from 'vue-router'
 
 import { h } from 'vue'
@@ -19,12 +19,12 @@ export const router = createRouter({
         { path: '/', component: Home },
         {
             path: '/doc', component: Doc, children: [
-                { path: '', component: DocDemo },
                 { path: 'intro', component: md("intro") },
                 { path: 'install', component: md("install") },
                 { path: 'switch', component: SwitchDemo },
-                { path: 'Button', component: ButtonDemo },
-                { path: 'Carousel', component: CarouselDemo },
+                { path: 'button', component: ButtonDemo },
+                { path: 'carousel', component: CarouselDemo },
+                { path: 'selector', component: SelectorDemo },
             ]
         }
     ]

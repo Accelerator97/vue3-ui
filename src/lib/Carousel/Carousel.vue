@@ -1,6 +1,6 @@
 <template>
-  <div class="carousel">
-    <div class="inner">
+  <div class="gulu-carousel" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
+    <div class="gulu-carousel-inner">
       <CarouselDot
         :hasDot="hasDot"
         :itemLen="itemLen"
@@ -8,6 +8,8 @@
         :dotBgColor="dotBgColor"
         @dotClick="dotClick"
       />
+      <CarouselDirector dir="prev"  @dirClick="dirClick" :hasDirector="hasDirector"/>
+      <CarouselDirector dir="next"  @dirClick="dirClick" :hasDirector="hasDirector"/>
       <slot></slot>
     </div>
   </div>
@@ -22,6 +24,7 @@ import {
   getCurrentInstance,
 } from "vue";
 import CarouselDot from "./CarouselDot.vue";
+import CarouselDirector from "./CarouselDirector.vue";
 export default {
   name: "Carousel",
   props: {
@@ -47,7 +50,7 @@ export default {
     },
     dotBgColor: String,
   },
-  components: { CarouselDot },
+  components: { CarouselDot,CarouselDirector },
   setup(props) {
     const instance = getCurrentInstance();
     const state = reactive({
@@ -58,14 +61,10 @@ export default {
     const autoPlay = () => {
       if (props.autoplay) {
         t = setInterval(() => {
-          setIndex("prev");
+          setIndex("next");
         }, props.duration);
       }
     };
-    onMounted(() => {
-      state.itemLen = instance.slots.default()[0].children.length as any;
-      autoPlay();
-    });
     const setIndex = (dir) => {
       switch (dir) {
         case "next":
@@ -84,26 +83,46 @@ export default {
           break;
       }
     };
-    const dotClick=(index)=>{
-        state.currentIndex = index
+    const dotClick = (index) => {
+      state.currentIndex = index;
+    };
+    const mouseEnter =() =>{
+        _clearIntervalFn()
     }
+    const mouseLeave =() =>{
+        autoPlay()
+    }
+    function _clearIntervalFn(){
+        clearInterval(t)
+        t = null
+    }
+    const dirClick = (dir)=>{
+        setIndex(dir) 
+    }
+    onMounted(() => {
+      state.itemLen = instance.slots.default()[0].children.length as any;
+      autoPlay();
+    });
     onBeforeUnmount(() => {
       clearInterval;
       t = null;
     });
     return {
       ...toRefs(state), //调用toRef 响应式数据和 原始数据都会发生改变，Dom不变
-      dotClick
+      dotClick,
+      mouseEnter,
+      mouseLeave,
+      dirClick
     };
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.carousel {
+.gulu-carousel {
   width: 100%;
   height: 100%;
-  .inner {
+  .gulu-carousel-inner {
     width: 100%;
     height: 100%;
     position: relative;

@@ -1,6 +1,6 @@
 <template>
   <transition>
-    <div class="carouselItem" v-if="selfIndex === currentIndex">
+    <div class="gulu-carouselItem" v-if="selfIndex === currentIndex">
       <slot></slot>
     </div>
   </transition>
@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.carouselItem {
+.gulu-carouselItem {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -43,22 +43,19 @@ export default {
   left: 0;
 }
 .v-enter-active,
-.v-leave-active{
-    transition: all .3s linear;
+.v-leave-active {
+  transition: all 0.3s linear;
 }
-.v-enter-active{
-    transform: translateX(100%);
+.v-enter-active {
+  transform: translateX(100%);
 }
-.v-enter-to{
-    transform: translateX(0);
+.v-enter-to {
+  transform: translateX(0);
 }
-.v-leave-active{
-    transform: translateX(0%);
+.v-leave-active {
+  transform: translateX(0%);
 }
-.v-leave-to{
-    transform: translateX(-100%);
-}
-img {
-  width: 100%;
+.v-leave-to {
+  transform: translateX(-100%);
 }
 </style>
