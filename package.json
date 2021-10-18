@@ -5,6 +5,9 @@
     "dev": "vite",
     "build": "vite build"
   },
+  "env": {
+    "node": true
+  },
   "dependencies": {
     "github-markdown-css": "^4.0.0",
     "prismjs": "^1.25.0",

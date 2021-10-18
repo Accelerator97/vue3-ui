@@ -7,7 +7,7 @@
     <Button theme="button">普通按钮</Button>
     <Button theme="link">链接按钮</Button>
     <Button theme="text">文本按钮</Button>
-    <br>
+    <br/>
     <Button theme="warning">警告按钮</Button>
     <Button theme="main">主要按钮</Button>
     <Button theme="danger">危险按钮</Button>

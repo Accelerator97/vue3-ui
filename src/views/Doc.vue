@@ -21,10 +21,7 @@
             <router-link to="/doc/button">button组件</router-link>
           </li>
           <li>
-            <router-link to="/doc/diaLog">Diaslog组件</router-link>
-          </li>
-          <li>
-            <router-link to="/doc/tabs">Tabs组件</router-link>
+            <router-link to="/doc/Carousel">Carousel组件</router-link>
           </li>
         </ol>
       </aside>
