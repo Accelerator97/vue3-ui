@@ -38,6 +38,6 @@ export default {
 
 <style lang="scss" scoped>
 .container{
-  height: 480px;
+  height: 470px;
 }
 </style>

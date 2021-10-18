@@ -1,6 +1,13 @@
 <template>
   <div class="carousel">
     <div class="inner">
+      <CarouselDot
+        :hasDot="hasDot"
+        :itemLen="itemLen"
+        :currentIndex="currentIndex"
+        :dotBgColor="dotBgColor"
+        @dotClick="dotClick"
+      />
       <slot></slot>
     </div>
   </div>
@@ -14,6 +21,7 @@ import {
   onBeforeUnmount,
   getCurrentInstance,
 } from "vue";
+import CarouselDot from "./CarouselDot.vue";
 export default {
   name: "Carousel",
   props: {
@@ -37,7 +45,9 @@ export default {
       type: Boolean,
       default: true,
     },
+    dotBgColor: String,
   },
+  components: { CarouselDot },
   setup(props) {
     const instance = getCurrentInstance();
     const state = reactive({
@@ -48,7 +58,7 @@ export default {
     const autoPlay = () => {
       if (props.autoplay) {
         t = setInterval(() => {
-            setIndex('prev')
+          setIndex("prev");
         }, props.duration);
       }
     };
@@ -74,12 +84,16 @@ export default {
           break;
       }
     };
+    const dotClick=(index)=>{
+        state.currentIndex = index
+    }
     onBeforeUnmount(() => {
       clearInterval;
       t = null;
     });
     return {
       ...toRefs(state), //调用toRef 响应式数据和 原始数据都会发生改变，Dom不变
+      dotClick
     };
   },
 };
