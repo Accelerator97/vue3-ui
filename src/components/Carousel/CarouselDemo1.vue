@@ -11,10 +11,8 @@
       :hasDot="true"
       :hasDirector="true"
     >
-      <CarouselItem>
-        <img src="../../assets/images/1.jpg" />
-        <img src="../../assets/images/2.jpg" />
-        <img src="../../assets/images/3.jpg" />
+      <CarouselItem v-for="(item, index) of carData" :key="index">
+        <img :src="getImageUrl(item.img_name)" />
       </CarouselItem>
     </Carousel>
   </div>

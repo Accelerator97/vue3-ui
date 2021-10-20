@@ -12,7 +12,7 @@ export default {
   name: "CarItem",
   setup() {
     const instance = getCurrentInstance(); //获取当前实例
-    // console.log(instance);
+    console.log(instance);
 
     const state = reactive({
       //从实例的vnode上拿到key，并且设置为响应式
