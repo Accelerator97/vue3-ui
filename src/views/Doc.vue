@@ -55,13 +55,10 @@ export default {
 .layout {
   display: flex;
   flex-direction: column;
-  // height: 100%;
-  // height: 100vh;
   > .nav {
     flex-shrink: 0; //Topnav不允许缩放
   }
   .content {
-    // background: blue;
     height: 100%;
     display: flex;
     flex-grow: 1;
