@@ -1,20 +1,18 @@
 <demo>
-基本用法：设置自动播放/轮播时间/初始图片
+示例二：隐藏dot和director
 </demo>
 
 <template>
   <div class="container">
     <Carousel
       :autoplay="true"
-      :duration="2000"
+      :duration="3000"
       :initial="0"
-      :hasDot="true"
-      :hasDirector="true"
+      :hasDot="false"
+      :hasDirector="false"
     >
-      <CarouselItem>
-        <img src="../../assets/images/1.jpg" />
-        <img src="../../assets/images/2.jpg" />
-        <img src="../../assets/images/3.jpg" />
+      <CarouselItem v-for="(item, index) of carData" :key="index">
+        <img :src="getImageUrl(item.img_name)" />
       </CarouselItem>
     </Carousel>
   </div>

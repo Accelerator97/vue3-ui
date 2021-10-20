@@ -24,7 +24,10 @@
             <router-link to="/doc/carousel">Carousel组件</router-link>
           </li>
           <li>
-            <router-link to="/doc/Selector">Selector组件</router-link>
+            <router-link to="/doc/selector">Selector组件</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/magnifier">Magnifier组件</router-link>
           </li>
         </ol>
       </aside>
