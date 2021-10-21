@@ -7,29 +7,28 @@
 </template>
 
 <script lang="ts">
-import { getCurrentInstance, reactive, toRefs, watch } from "vue";
+import { getCurrentInstance, reactive, toRefs, watch,inject,computed} from "vue";
 export default {
   name: "CarItem",
   setup() {
     const instance = getCurrentInstance(); //获取当前实例
-    console.log(instance);
-
+    const parentState = inject('parentState'); 
     const state = reactive({
       //从实例的vnode上拿到key，并且设置为响应式
       selfIndex: instance.vnode.key,
-      currentIndex: instance.parent.ctx.currentIndex,
+      currentIndex:computed(()=> parentState.currentIndex)
     });
-    //watch接受两个回调，第一个回调返回要监听的对象，第二个回调是数据改变时的回调函数, 有2个参数, 第一个是改变后的数据, 第二个是改变前的数据;
+    // watch接受两个回调，第一个回调返回要监听的对象，第二个回调是数据改变时的回调函数, 有2个参数, 第一个是改变后的数据, 第二个是改变前的数据;
     watch(
       () => {
-        return instance.parent.ctx.currentIndex;
+        return parentState.currentIndex;
       },
       (value) => {
         state.currentIndex = value;
       }
     );
 
-    return { ...toRefs(state) };
+    return { ...toRefs(state),parentState };
   },
 };
 </script>

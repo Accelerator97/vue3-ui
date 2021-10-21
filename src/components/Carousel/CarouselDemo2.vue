@@ -12,7 +12,7 @@
       :hasDirector="false"
     >
       <CarouselItem v-for="(item, index) of carData" :key="index">
-        <img :src="getImageUrl(item.img_name)" />
+         <img :src="getImageUrl(item.img_name)" />
       </CarouselItem>
     </Carousel>
   </div>
@@ -29,7 +29,7 @@ export default {
   },
   setup() {
     const getImageUrl = (name) => {
-      return new URL(`../../assets/images/${name}`, import.meta.url).href;
+      return new URL(`/src/assets/images/${name}`, import.meta.url).href;
     };
     return { carData, getImageUrl };
   },

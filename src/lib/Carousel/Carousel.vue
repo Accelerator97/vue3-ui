@@ -22,9 +22,11 @@ import {
   onMounted,
   onBeforeUnmount,
   getCurrentInstance,
+  provide
 } from "vue";
 import CarouselDot from "./CarouselDot.vue";
 import CarouselDirector from "./CarouselDirector.vue";
+import CarouselItem from './CarouselItem.vue'
 export default {
   name: "Carousel",
   props: {
@@ -50,7 +52,7 @@ export default {
     },
     dotBgColor: String,
   },
-  components: { CarouselDot,CarouselDirector },
+  components: { CarouselDot,CarouselDirector,CarouselItem },
   setup(props) {
     const instance = getCurrentInstance();
     const state = reactive({
@@ -65,7 +67,8 @@ export default {
         }, props.duration);
       }
     };
-    const setIndex = (dir) => {
+    provide('parentState',state)
+    const setIndex = (dir: string) => {
       switch (dir) {
         case "next":
           state.currentIndex += 1;
@@ -83,7 +86,7 @@ export default {
           break;
       }
     };
-    const dotClick = (index) => {
+    const dotClick = (index:any) => {
       state.currentIndex = index;
     };
     const mouseEnter =() =>{
@@ -100,7 +103,7 @@ export default {
         setIndex(dir) 
     }
     onMounted(() => {
-      state.itemLen = instance.slots.default()[0].children.length as any;
+      state.itemLen = instance.slots.default()[0].children.length as any; 
       autoPlay();
     });
     onBeforeUnmount(() => {
@@ -108,7 +111,7 @@ export default {
       t = null;
     });
     return {
-      ...toRefs(state), //调用toRef 响应式数据和 原始数据都会发生改变，Dom不变
+      ...toRefs(state),
       dotClick,
       mouseEnter,
       mouseLeave,
