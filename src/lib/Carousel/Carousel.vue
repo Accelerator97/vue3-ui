@@ -68,7 +68,7 @@ export default {
       }
     };
     provide('parentState',state)
-    const setIndex = (dir: string) => {
+    const setIndex = (dir) => {
       switch (dir) {
         case "next":
           state.currentIndex += 1;
