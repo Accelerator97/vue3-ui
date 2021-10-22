@@ -1,0 +1,6 @@
+import { default as Switch} from './Switch/Switch.vue'
+import {default as Button} from './Button/Button.vue'
+import {default as Carousel} from './Carousel/Carousel.vue'
+import {default as CarouselItem} from './Carousel/CarouselItem.vue'
+import {default as Magnifier} from './Magnifier/Magnifier.vue'
+import {default as Selector} from './Selector/Selector.vue'
