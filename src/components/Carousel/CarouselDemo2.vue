@@ -12,7 +12,7 @@
       :hasDirector="false"
     >
       <CarouselItem v-for="(item, index) of carData" :key="index">
-         <img :src="getImageUrl(item.img_name)" />
+          <img :src="item" />
       </CarouselItem>
     </Carousel>
   </div>
